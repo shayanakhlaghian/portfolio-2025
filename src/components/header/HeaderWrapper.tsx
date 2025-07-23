@@ -7,7 +7,11 @@ const HeaderWrapper = ({ children }: { children: React.ReactNode }) => {
     gsap.to('.header-item', { opacity: 1, duration: 1, stagger: 0.1 });
   }, []);
 
-  return <header className="flex justify-between px-8 py-4">{children}</header>;
+  return (
+    <header className="flex py-4 justify-between px-8 z-10">
+      {children}
+    </header>
+  );
 };
 
 export default HeaderWrapper;

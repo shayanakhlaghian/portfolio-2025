@@ -43,11 +43,6 @@
   --font-accent: var(--font-jetbrains-mono);
 }
 
-/* Custom */
-:root {
-  --header-height: 3.25rem;
-}
-
 :root {
   --radius: 0.65rem;
   --background: oklch(1 0 0);
