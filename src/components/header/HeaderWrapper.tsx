@@ -8,7 +8,7 @@ const HeaderWrapper = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <header className="flex py-4 justify-between px-8 z-10">
+    <header className="flex  justify-between px-8 z-10 items-center h-[var(--header-height)]">
       {children}
     </header>
   );
