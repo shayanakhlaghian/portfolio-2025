@@ -1,12 +1,12 @@
 'use client';
+import { BackgroundBeams } from '@/components';
 import { Greet, Canvas } from '.';
 import type { Landing } from '@/payload-types';
-import { DotPattern } from '@/components';
 
 const Hero = (hero: Landing['hero']) => {
   return (
     <section className="relative flex h-[calc(100vh-var(--header-height))] w-full flex-col lg:flex-row">
-      <DotPattern className="absolute top-0 left-0 -z-10 [mask-image:radial-gradient(200px_circle_at_center,white,transparent)] lg:[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]" />
+      <BackgroundBeams />
       <div className="relative flex-1">
         {/* 
             The reason for top-[44%] class here is that it prevents 

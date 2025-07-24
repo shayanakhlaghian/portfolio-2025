@@ -2,6 +2,7 @@ export * from './button';
 export * from './dropdown-menu';
 export * from './tooltip';
 export * from './scroll-area';
+export * from './background-beams';
 export { default as ThemeToggle } from './ThemeToggle';
 export { default as Backdrop } from './Backdrop';
 export { default as MediaIcon } from './MediaIcon';

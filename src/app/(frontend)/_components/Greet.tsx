@@ -31,7 +31,7 @@ const Greet = ({ title, description, cta }: Landing['hero']) => {
 
   return (
     <div className="flex flex-1 flex-col gap-4 px-8 lg:justify-center lg:px-16">
-      <h1 className="hero-title bg-gradient-to-r from-primary to-secondary bg-clip-text font-accent text-2xl font-bold text-transparent lg:text-3xl">
+      <h1 className="hero-title bg-clip-text font-accent text-2xl font-bold text-primary lg:text-3xl">
         {title}
       </h1>
       <RichText data={description} className="hero-description prose-p:my-0" />
