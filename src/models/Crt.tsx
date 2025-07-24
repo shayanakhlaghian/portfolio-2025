@@ -29,26 +29,26 @@ const Crt = (props: React.JSX.IntrinsicElements['group']) => {
       <mesh geometry={nodes['Node-Mesh_1'].geometry} material={materials.mat17} />
       <mesh geometry={nodes['Node-Mesh_3'].geometry} material={materials.mat22} />
       {/* <mesh geometry={nodes['Node-Mesh_2'].geometry} material={materials.mat16} /> */}
-      <Plane
-        args={[0.47, 0.417]}
-        rotation-y={Math.PI}
-        position={[0.015, 0.2125, -0.34]}
-        material-color="black"
-      >
-        <Html
-          transform
-          occlude="blending"
-          position={[0, 0, 0.001]}
-          distanceFactor={1}
-          className="h-[170px] w-[190px] bg-black"
-        >
-          <TypeAnimation
-            sequence={typeAnimationSequence}
-            repeat={Infinity}
-            className='text-[10px] text-white'
-          />
-        </Html>
-      </Plane>
+      <group rotation-y={Math.PI} position={[0.015, 0.2125, -0.34]}>
+        <Plane args={[0.47, 0.417]} material-color="black">
+          <Html
+            transform
+            occlude="blending"
+            position={[0, 0, 0.001]}
+            distanceFactor={1}
+            zIndexRange={[2, 10]}
+            className="h-[175px] w-[190px] bg-black"
+          >
+            <div className="size-full">
+              <TypeAnimation
+                sequence={typeAnimationSequence}
+                repeat={Infinity}
+                className="text-[10px] text-white"
+              />
+            </div>
+          </Html>
+        </Plane>
+      </group>
     </group>
   );
 };

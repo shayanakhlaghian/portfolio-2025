@@ -52,7 +52,7 @@ const Experience = () => {
           floatIntensity={0.8}
           rotationIntensity={0.9}
         >
-          <Crt rotation-y={-Math.PI * 0.875} scale={isMobile ? 0.95 : 1} />
+          <Crt rotation-y={-Math.PI * 0.875} scale={isMobile ? .95 : 1}/>
         </Float>
       </PresentationControls>
     </>
@@ -69,7 +69,7 @@ const Loading = () => {
         max={100}
         gaugePrimaryColor="#0095FF"
         gaugeSecondaryColor="#dedede"
-        className="size-20 text-base text-black md:size-24 lg:size-32 lg:text-xl"
+        className="text-black size-20 text-base md:size-24 lg:size-32 lg:text-xl"
         value={progress}
       />
     </Html>

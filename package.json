@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@isaac_ua/drei-html-fix": "^1.0.2",
     "@payloadcms/db-sqlite": "3.48.0",
     "@payloadcms/next": "3.48.0",
     "@payloadcms/payload-cloud": "3.48.0",

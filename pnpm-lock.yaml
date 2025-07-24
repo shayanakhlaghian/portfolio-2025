@@ -11,6 +11,9 @@ importers:
       '@gsap/react':
         specifier: ^2.1.2
         version: 2.1.2(gsap@3.13.0)(react@19.1.0)
+      '@isaac_ua/drei-html-fix':
+        specifier: ^1.0.2
+        version: 1.0.2(@react-three/fiber@9.2.0(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.178.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@payloadcms/db-sqlite':
         specifier: 3.48.0
         version: 3.48.0(payload@3.48.0(graphql@16.11.0)(typescript@5.7.3))
@@ -1236,6 +1239,13 @@ packages:
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [win32]
+
+  '@isaac_ua/drei-html-fix@1.0.2':
+    resolution: {integrity: sha512-WC/h5j1hVHwfF3HqpbXfL2b6ii9bihQNdAK/9rDzRepIYOfHvSpsjTWokuWtn5rTT5/GlcR4252mAnmeBCEV/w==}
+    peerDependencies:
+      '@react-three/fiber': ^8.0.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
 
   '@isaacs/fs-minipass@4.0.1':
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
@@ -7079,6 +7089,12 @@ snapshots:
 
   '@img/sharp-win32-x64@0.34.2':
     optional: true
+
+  '@isaac_ua/drei-html-fix@1.0.2(@react-three/fiber@9.2.0(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.178.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      '@react-three/fiber': 9.2.0(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.178.0)
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
 
   '@isaacs/fs-minipass@4.0.1':
     dependencies:
