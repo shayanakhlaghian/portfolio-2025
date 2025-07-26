@@ -1,12 +1,7 @@
+import type { Nav } from '@/payload-types';
 import { DesktopNav, MobileNav } from '.';
-import { getPayload } from '@/actions';
 
-const Nav = async () => {
-  const payload = await getPayload();
-  const { items } = await payload.findGlobal({
-    slug: 'nav',
-  });
-
+const Nav = ({ items }: { items: Nav['items'] }) => {
   return (
     <>
       <DesktopNav items={items} />
