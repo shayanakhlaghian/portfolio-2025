@@ -4,32 +4,10 @@ import { useRouter } from 'next/navigation';
 import { MenuIcon, XIcon } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-
-import { Button, Backdrop, ScrollArea } from '..';
 import Link from 'next/link';
 
-const dummies = [
-  {
-    id: 1,
-    title: 'About Me',
-    href: '/#about',
-  },
-  {
-    id: 2,
-    title: 'My Skills',
-    href: '/#skills',
-  },
-  {
-    id: 3,
-    title: 'My Works',
-    href: '/#works',
-  },
-  {
-    id: 4,
-    title: 'Contact Me',
-    href: '/#contact',
-  },
-];
+import type { Nav, Icon } from '@/payload-types';
+import { Button, Backdrop, ScrollArea, MediaIcon } from '..';
 
 const Toggle = ({ onClick }: { onClick: () => void }) => {
   return (
@@ -44,7 +22,7 @@ const Toggle = ({ onClick }: { onClick: () => void }) => {
   );
 };
 
-const MobileNav = () => {
+const MobileNav = ({ items }: { items: Nav['items'] }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const backdropRef = useRef<HTMLDivElement>(null);
@@ -73,10 +51,14 @@ const MobileNav = () => {
   const handleClose = () => tl.reverse().then(() => setIsOpen(false));
 
   const router = useRouter();
-  const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
+  const handleNavLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    href: string,
+    newTab: boolean | undefined | null,
+  ) => {
     e.preventDefault();
 
-    tl.reverse().then(() => router.push(href));
+    newTab ? window.open(href, '_blank') : tl.reverse().then(() => router.push(href));
   };
 
   return (
@@ -98,10 +80,15 @@ const MobileNav = () => {
         <div className="flex size-full items-center justify-center">
           <ScrollArea>
             <ul className="flex max-h-96 flex-col items-center gap-8">
-              {dummies.map(({ id, title, href }, index) => (
+              {items?.map(({ id, text, href, icon, newTab }, index) => (
                 <li key={id} className="mobile-nav-item font-accent text-lg font-bold">
-                  <Link href={href} onClick={(e) => handleNavLinkClick(e, href)}>
-                    {index + 1}. {title}
+                  <Link
+                    href={href}
+                    onClick={(e) => handleNavLinkClick(e, href, newTab)}
+                    className="flex items-center gap-1"
+                  >
+                    {index + 1}. {text}
+                    <MediaIcon icon={icon as Icon} />
                   </Link>
                 </li>
               ))}

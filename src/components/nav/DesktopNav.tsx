@@ -1,35 +1,16 @@
-import Link from 'next/link';
+import type { Nav, Icon } from '@/payload-types';
+import { AppLink, MediaIcon } from '..';
 
-const dummies = [
-  {
-    id: 1,
-    title: 'About Me',
-    href: '/#about',
-  },
-  {
-    id: 2,
-    title: 'My Skills',
-    href: '/#skills',
-  },
-  {
-    id: 3,
-    title: 'My Works',
-    href: '/#works',
-  },
-  {
-    id: 4,
-    title: 'Contact Me',
-    href: '/#contact',
-  },
-];
-
-const DesktopNav = () => {
+const DesktopNav = ({ items }: { items: Nav['items'] }) => {
   return (
-    <nav className='hidden lg:block'>
+    <nav className="hidden lg:block">
       <ul className="flex items-center gap-6">
-        {dummies.map(({ id, title, href }) => (
+        {items?.map(({ id, text, href, icon, newTab }) => (
           <li key={id} className="header-item font-accent text-sm opacity-0">
-            <Link href={href}>{title}</Link>
+            <AppLink href={href} newTab={newTab} className="flex items-center gap-1">
+              {text}
+              <MediaIcon icon={icon as Icon} />
+            </AppLink>
           </li>
         ))}
       </ul>
