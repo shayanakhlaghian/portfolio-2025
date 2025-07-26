@@ -208,6 +208,11 @@ export const Landing: GlobalConfig = {
                       type: 'text',
                       required: true,
                     },
+                    {
+                      name: 'newTab',
+                      type: 'checkbox',
+                      defaultValue: false,
+                    },
                   ],
                 },
                 {
@@ -228,6 +233,11 @@ export const Landing: GlobalConfig = {
                       name: 'href',
                       type: 'text',
                       required: true,
+                    },
+                    {
+                      name: 'newTab',
+                      type: 'checkbox',
+                      defaultValue: false,
                     },
                   ],
                 },
@@ -250,6 +260,6 @@ export const Landing: GlobalConfig = {
           type: 'richText',
         },
       ],
-    }
+    },
   ],
 };

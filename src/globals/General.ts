@@ -22,12 +22,18 @@ export const General: GlobalConfig = {
           name: 'icon',
           type: 'upload',
           relationTo: 'icons',
+          required: true,
         },
         {
           name: 'href',
           type: 'text',
           required: true,
         },
+        {
+          name: 'newTab',
+          type: 'checkbox',
+          defaultValue: false,
+        }
       ],
     },
   ],

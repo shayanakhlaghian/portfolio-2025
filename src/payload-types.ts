@@ -470,11 +470,13 @@ export interface Landing {
               text: string;
               icon?: (number | null) | Icon;
               href: string;
+              newTab?: boolean | null;
             };
             demo: {
               text: string;
               icon?: (number | null) | Icon;
               href: string;
+              newTab?: boolean | null;
             };
           };
           id?: string | null;
@@ -510,8 +512,9 @@ export interface General {
   id: number;
   source: {
     text: string;
-    icon?: (number | null) | Icon;
+    icon: number | Icon;
     href: string;
+    newTab?: boolean | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -564,6 +567,7 @@ export interface Nav {
         text: string;
         icon?: (number | null) | Icon;
         href: string;
+        newTab?: boolean | null;
         id?: string | null;
       }[]
     | null;
@@ -644,6 +648,7 @@ export interface LandingSelect<T extends boolean = true> {
                           text?: T;
                           icon?: T;
                           href?: T;
+                          newTab?: T;
                         };
                     demo?:
                       | T
@@ -651,6 +656,7 @@ export interface LandingSelect<T extends boolean = true> {
                           text?: T;
                           icon?: T;
                           href?: T;
+                          newTab?: T;
                         };
                   };
               id?: T;
@@ -677,6 +683,7 @@ export interface GeneralSelect<T extends boolean = true> {
         text?: T;
         icon?: T;
         href?: T;
+        newTab?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -733,6 +740,7 @@ export interface NavSelect<T extends boolean = true> {
         text?: T;
         icon?: T;
         href?: T;
+        newTab?: T;
         id?: T;
       };
   updatedAt?: T;

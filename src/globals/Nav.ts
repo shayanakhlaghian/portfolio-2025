@@ -28,6 +28,11 @@ export const Nav: GlobalConfig = {
           type: 'text',
           required: true,
         },
+        {
+          name: 'newTab',
+          type: 'checkbox',
+          defaultValue: false,
+        },
       ],
     },
   ],
