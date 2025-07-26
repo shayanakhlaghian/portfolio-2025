@@ -8,3 +8,4 @@ export { default as Backdrop } from './Backdrop';
 export { default as MediaIcon } from './MediaIcon';
 export { default as RichText } from './RichText';
 export { default as AppLink } from './AppLink';
+export { default as SectionWrapper } from './SectionWrapper';

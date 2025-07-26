@@ -8,18 +8,11 @@ import { AppLink, MediaIcon, RainbowButton, RichText } from '@/components';
 const Greet = ({ title, description, cta }: Landing['hero']) => {
   useGSAP(() => {
     const titleSplit = SplitText.create('.hero-title', { type: 'chars' });
-    const descriptionSplit = SplitText.create('.hero-description', { type: 'lines, words' });
 
     gsap.fromTo(
       titleSplit.chars,
       { opacity: 0, yPercent: 100 },
       { opacity: 1, yPercent: 0, duration: 1.2, ease: 'expo.out', stagger: 0.05 },
-    );
-
-    gsap.fromTo(
-      descriptionSplit.lines,
-      { opacity: 0, yPercent: 100 },
-      { opacity: 1, yPercent: 0, duration: 1.2, delay: 0.5, ease: 'expo.out', stagger: 0.05 },
     );
 
     gsap.fromTo(
@@ -34,7 +27,7 @@ const Greet = ({ title, description, cta }: Landing['hero']) => {
       <h1 className="hero-title bg-clip-text font-accent text-2xl font-bold text-primary lg:text-3xl">
         {title}
       </h1>
-      <RichText data={description} className="hero-description prose-p:my-0" />
+      <RichText data={description} gsapConfig={{ delay: 0.6 }} />
       <AppLink href={cta.href} newTab={cta.newTab} className="hero-cta">
         <RainbowButton className="self-start capitalize">
           {cta.text} <MediaIcon icon={cta.icon as Icon} />
