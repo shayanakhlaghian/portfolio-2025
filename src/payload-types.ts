@@ -88,9 +88,15 @@ export interface Config {
   };
   globals: {
     landing: Landing;
+    general: General;
+    metadata: Metadatum;
+    nav: Nav;
   };
   globalsSelect: {
     landing: LandingSelect<false> | LandingSelect<true>;
+    general: GeneralSelect<false> | GeneralSelect<true>;
+    metadata: MetadataSelect<false> | MetadataSelect<true>;
+    nav: NavSelect<false> | NavSelect<true>;
   };
   locale: null;
   user: User & {
@@ -364,6 +370,203 @@ export interface Landing {
       newTab?: boolean | null;
     };
   };
+  about?: {
+    title?: string | null;
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  skills?: {
+    title?: string | null;
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    items?:
+      | {
+          logo: number | Icon;
+          name: string;
+          field: 'frontend' | 'backend' | 'app';
+          level: number;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  works?: {
+    title?: string | null;
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    items?:
+      | {
+          cover: number | Media;
+          name: string;
+          excerpt: string;
+          description: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
+          tags?:
+            | {
+                tag: string;
+                id?: string | null;
+              }[]
+            | null;
+          stack?:
+            | {
+                logo: number | Icon;
+                name: string;
+                id?: string | null;
+              }[]
+            | null;
+          links: {
+            source: {
+              text: string;
+              icon?: (number | null) | Icon;
+              href: string;
+            };
+            demo: {
+              text: string;
+              icon?: (number | null) | Icon;
+              href: string;
+            };
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
+  contact?: {
+    title?: string | null;
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "general".
+ */
+export interface General {
+  id: number;
+  source: {
+    text: string;
+    icon?: (number | null) | Icon;
+    href: string;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "metadata".
+ */
+export interface Metadatum {
+  id: number;
+  title: string;
+  description: string;
+  openGraph?: {
+    title?: string | null;
+    description?: string | null;
+    url?: string | null;
+    images?:
+      | {
+          image?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+    siteName?: string | null;
+  };
+  twitter?: {
+    card?: ('summary' | 'summary_large_image') | null;
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  icons: {
+    icon: number | Icon;
+    apple: number | Media;
+  };
+  /**
+   * Robots meta tags
+   */
+  robots?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "nav".
+ */
+export interface Nav {
+  id: number;
+  items?:
+    | {
+        text: string;
+        icon?: (number | null) | Icon;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -385,6 +588,152 @@ export interface LandingSelect<T extends boolean = true> {
               href?: T;
               newTab?: T;
             };
+      };
+  about?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
+  skills?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        items?:
+          | T
+          | {
+              logo?: T;
+              name?: T;
+              field?: T;
+              level?: T;
+              id?: T;
+            };
+      };
+  works?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        items?:
+          | T
+          | {
+              cover?: T;
+              name?: T;
+              excerpt?: T;
+              description?: T;
+              tags?:
+                | T
+                | {
+                    tag?: T;
+                    id?: T;
+                  };
+              stack?:
+                | T
+                | {
+                    logo?: T;
+                    name?: T;
+                    id?: T;
+                  };
+              links?:
+                | T
+                | {
+                    source?:
+                      | T
+                      | {
+                          text?: T;
+                          icon?: T;
+                          href?: T;
+                        };
+                    demo?:
+                      | T
+                      | {
+                          text?: T;
+                          icon?: T;
+                          href?: T;
+                        };
+                  };
+              id?: T;
+            };
+      };
+  contact?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "general_select".
+ */
+export interface GeneralSelect<T extends boolean = true> {
+  source?:
+    | T
+    | {
+        text?: T;
+        icon?: T;
+        href?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "metadata_select".
+ */
+export interface MetadataSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  openGraph?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        url?: T;
+        images?:
+          | T
+          | {
+              image?: T;
+              id?: T;
+            };
+        siteName?: T;
+      };
+  twitter?:
+    | T
+    | {
+        card?: T;
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  icons?:
+    | T
+    | {
+        icon?: T;
+        apple?: T;
+      };
+  robots?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "nav_select".
+ */
+export interface NavSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        text?: T;
+        icon?: T;
+        href?: T;
+        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;
