@@ -371,6 +371,7 @@ export interface Landing {
     };
   };
   about?: {
+    avatar?: (number | null) | Media;
     title?: string | null;
     description?: {
       root: {
@@ -387,6 +388,7 @@ export interface Landing {
       };
       [k: string]: unknown;
     } | null;
+    github?: string | null;
   };
   skills?: {
     title?: string | null;
@@ -596,8 +598,10 @@ export interface LandingSelect<T extends boolean = true> {
   about?:
     | T
     | {
+        avatar?: T;
         title?: T;
         description?: T;
+        github?: T;
       };
   skills?:
     | T

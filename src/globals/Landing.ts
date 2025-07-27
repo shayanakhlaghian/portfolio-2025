@@ -54,12 +54,21 @@ export const Landing: GlobalConfig = {
       type: 'group',
       fields: [
         {
+          name: 'avatar',
+          type: 'upload',
+          relationTo: 'media',
+        },
+        {
           name: 'title',
           type: 'text',
         },
         {
           name: 'description',
           type: 'richText',
+        },
+        {
+          name: 'github',
+          type: 'text',
         },
       ],
     },

@@ -48,10 +48,14 @@ const Title = ({
   return (
     <Tag
       ref={ref}
-      className={cn('mb-6 font-accent text-lg font-bold lg:text-xl 2xl:text-2xl', className, {
-        'text-2xl text-primary lg:text-3xl 2xl:text-4xl': Tag === 'h1',
-        'text-xl text-primary lg:text-2xl 2xl:text-3xl': Tag === 'h2',
-      })}
+      className={cn(
+        'mb-6 font-accent text-lg font-bold lg:text-xl 2xl:text-2xl',
+        {
+          'text-2xl text-primary lg:text-3xl 2xl:text-4xl': Tag === 'h1',
+          'text-xl text-primary lg:text-2xl 2xl:text-3xl': Tag === 'h2',
+        },
+        className,
+      )}
       {...props}
     >
       {children}
