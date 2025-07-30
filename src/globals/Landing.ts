@@ -1,6 +1,6 @@
 import { type GlobalConfig } from 'payload';
 
-import { isAdmin, Field } from '@/lib';
+import { isAdmin } from '@/lib';
 
 export const Landing: GlobalConfig = {
   slug: 'landing',
@@ -100,25 +100,6 @@ export const Landing: GlobalConfig = {
               required: true,
             },
             {
-              name: 'field',
-              type: 'select',
-              options: [
-                {
-                  label: 'Frontend',
-                  value: Field.Frontend,
-                },
-                {
-                  label: 'Backend',
-                  value: Field.Backend,
-                },
-                {
-                  label: 'App',
-                  value: Field.App,
-                },
-              ],
-              required: true,
-            },
-            {
               name: 'level',
               type: 'number',
               min: 1,
@@ -160,6 +141,7 @@ export const Landing: GlobalConfig = {
               name: 'excerpt',
               type: 'textarea',
               required: true,
+              maxLength: 150,
             },
             {
               name: 'description',
@@ -167,88 +149,28 @@ export const Landing: GlobalConfig = {
               required: true,
             },
             {
-              name: 'tags',
-              type: 'array',
-              fields: [
-                {
-                  name: 'tag',
-                  type: 'text',
-                  required: true,
-                },
-              ],
-            },
-            {
-              name: 'stack',
-              type: 'array',
-              fields: [
-                {
-                  name: 'logo',
-                  type: 'upload',
-                  relationTo: 'icons',
-                  required: true,
-                },
-                {
-                  name: 'name',
-                  type: 'text',
-                  required: true,
-                },
-              ],
-            },
-            {
-              name: 'links',
+              name: 'demo',
               type: 'group',
               fields: [
                 {
-                  name: 'source',
-                  type: 'group',
-                  fields: [
-                    {
-                      name: 'text',
-                      type: 'text',
-                      required: true,
-                    },
-                    {
-                      name: 'icon',
-                      type: 'upload',
-                      relationTo: 'icons',
-                    },
-                    {
-                      name: 'href',
-                      type: 'text',
-                      required: true,
-                    },
-                    {
-                      name: 'newTab',
-                      type: 'checkbox',
-                      defaultValue: false,
-                    },
-                  ],
+                  name: 'href',
+                  type: 'text',
+                  required: true,
                 },
                 {
-                  name: 'demo',
-                  type: 'group',
-                  fields: [
-                    {
-                      name: 'text',
-                      type: 'text',
-                      required: true,
-                    },
-                    {
-                      name: 'icon',
-                      type: 'upload',
-                      relationTo: 'icons',
-                    },
-                    {
-                      name: 'href',
-                      type: 'text',
-                      required: true,
-                    },
-                    {
-                      name: 'newTab',
-                      type: 'checkbox',
-                      defaultValue: false,
-                    },
-                  ],
+                  name: 'text',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'icon',
+                  type: 'upload',
+                  relationTo: 'icons',
+                },
+                {
+                  name: 'newTab',
+                  type: 'checkbox',
+                  defaultValue: false,
                 },
               ],
             },

@@ -411,7 +411,6 @@ export interface Landing {
       | {
           logo: number | Icon;
           name: string;
-          field: 'frontend' | 'backend' | 'app';
           level: number;
           id?: string | null;
         }[]
@@ -454,32 +453,11 @@ export interface Landing {
             };
             [k: string]: unknown;
           };
-          tags?:
-            | {
-                tag: string;
-                id?: string | null;
-              }[]
-            | null;
-          stack?:
-            | {
-                logo: number | Icon;
-                name: string;
-                id?: string | null;
-              }[]
-            | null;
-          links: {
-            source: {
-              text: string;
-              icon?: (number | null) | Icon;
-              href: string;
-              newTab?: boolean | null;
-            };
-            demo: {
-              text: string;
-              icon?: (number | null) | Icon;
-              href: string;
-              newTab?: boolean | null;
-            };
+          demo: {
+            href: string;
+            text: string;
+            icon?: (number | null) | Icon;
+            newTab?: boolean | null;
           };
           id?: string | null;
         }[]
@@ -613,7 +591,6 @@ export interface LandingSelect<T extends boolean = true> {
           | {
               logo?: T;
               name?: T;
-              field?: T;
               level?: T;
               id?: T;
             };
@@ -630,38 +607,13 @@ export interface LandingSelect<T extends boolean = true> {
               name?: T;
               excerpt?: T;
               description?: T;
-              tags?:
+              demo?:
                 | T
                 | {
-                    tag?: T;
-                    id?: T;
-                  };
-              stack?:
-                | T
-                | {
-                    logo?: T;
-                    name?: T;
-                    id?: T;
-                  };
-              links?:
-                | T
-                | {
-                    source?:
-                      | T
-                      | {
-                          text?: T;
-                          icon?: T;
-                          href?: T;
-                          newTab?: T;
-                        };
-                    demo?:
-                      | T
-                      | {
-                          text?: T;
-                          icon?: T;
-                          href?: T;
-                          newTab?: T;
-                        };
+                    href?: T;
+                    text?: T;
+                    icon?: T;
+                    newTab?: T;
                   };
               id?: T;
             };

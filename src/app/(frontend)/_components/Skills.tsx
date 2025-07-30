@@ -18,11 +18,10 @@ type TSkill = {
   id?: string | null;
   logo: number | Icon;
   name: string;
-  field: string;
   level: number;
 };
 
-const SkillCard = ({ logo, name, field, level }: TSkill) => {
+const SkillCard = ({ logo, name, level }: TSkill) => {
   return (
     <Card className="w-48 border-none duration-500 hover:shadow-[0_0_6px_2px_var(--color-primary)]">
       <CardHeader>
@@ -31,12 +30,7 @@ const SkillCard = ({ logo, name, field, level }: TSkill) => {
             icon={logo as Icon}
             className="size-9 overflow-hidden rounded-full dark:invert-0"
           />
-          <div className="flex flex-col gap-1.5">
-            <CardTitle>{name}</CardTitle>
-            <Badge variant="default" className="capitalize">
-              {field}
-            </Badge>
-          </div>
+          <CardTitle>{name}</CardTitle>
         </div>
       </CardHeader>
       <CardContent className="flex flex-col items-end gap-2.5">
