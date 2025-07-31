@@ -37,7 +37,7 @@ const Title = ({
           ...gsapConfig,
           scrollTrigger: {
             trigger: ref.current,
-            start: 'top 95%',
+            start: 'top 85%',
           },
         },
       );

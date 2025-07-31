@@ -1,7 +1,7 @@
 import { Inter, JetBrains_Mono } from 'next/font/google';
 
 import './globals.css';
-import { Header } from '@/components';
+import { Header, Toaster } from '@/components';
 import { cn } from '@/lib';
 import Providers from './providers';
 
@@ -16,6 +16,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <Providers>
           <Header />
           <main className="w-full overflow-x-hidden">{children}</main>
+          <Toaster />
         </Providers>
       </body>
     </html>

@@ -1,4 +1,4 @@
-import { Hero, About, Skills, Works } from './_components';
+import { Hero, About, Skills, Works, Contact } from './_components';
 import { getPayload } from '@/actions';
 
 const Home = async () => {
@@ -13,6 +13,7 @@ const Home = async () => {
       <About {...about} />
       <Skills {...skills} />
       <Works {...works} />
+      <Contact />
     </>
   );
 };

@@ -43,7 +43,7 @@ const AnimatedRichText = ({
             ...gsapConfig,
             scrollTrigger: {
               trigger: p as gsap.DOMTarget,
-              start: 'top 95%',
+              start: 'top 85%',
             },
           },
         );

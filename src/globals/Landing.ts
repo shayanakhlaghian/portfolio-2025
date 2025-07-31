@@ -188,7 +188,7 @@ export const Landing: GlobalConfig = {
         },
         {
           name: 'description',
-          type: 'richText',
+          type: 'textarea',
         },
       ],
     },

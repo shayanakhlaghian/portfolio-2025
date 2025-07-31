@@ -24,7 +24,7 @@ const Container = ({
           ...gsapConfig,
           scrollTrigger: {
             trigger: ref.current,
-            start: 'top 90%',
+            start: 'top 85%',
           },
         },
       );
