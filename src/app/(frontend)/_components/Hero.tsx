@@ -17,7 +17,7 @@ const Hero = (hero: Landing['hero']) => {
           <div className="absolute-center size-5/6 rotate-45 rounded-3xl bg-secondary">
             <div className="size-full rotate-12 rounded-3xl bg-primary" />
           </div>
-          {/* <Canvas /> */}
+          <Canvas />
         </div>
       </div>
       <Greet {...hero} />
