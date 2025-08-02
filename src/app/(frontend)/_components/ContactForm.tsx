@@ -53,7 +53,7 @@ const ContactForm = () => {
               <FormControl>
                 <Input placeholder="Your Name" {...field} />
               </FormControl>
-              <FormMessage />
+              <FormMessage data-testid="name-error" />
             </FormItem>
           )}
         />
@@ -66,7 +66,7 @@ const ContactForm = () => {
               <FormControl>
                 <Input placeholder="you@example.com" {...field} />
               </FormControl>
-              <FormMessage />
+              <FormMessage data-testid="email-error" />
             </FormItem>
           )}
         />
@@ -79,7 +79,7 @@ const ContactForm = () => {
               <FormControl>
                 <Textarea placeholder="Your Message" className="min-h-20" {...field} />
               </FormControl>
-              <FormMessage />
+              <FormMessage data-testid="message-error" />
             </FormItem>
           )}
         />
