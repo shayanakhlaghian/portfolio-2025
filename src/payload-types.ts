@@ -483,9 +483,10 @@ export interface Landing {
             };
             [k: string]: unknown;
           };
-          demo: {
-            href: string;
-            text: string;
+          github?: string | null;
+          demo?: {
+            href?: string | null;
+            text?: string | null;
             icon?: (number | null) | Icon;
             newTab?: boolean | null;
           };
@@ -624,6 +625,7 @@ export interface LandingSelect<T extends boolean = true> {
               name?: T;
               excerpt?: T;
               description?: T;
+              github?: T;
               demo?:
                 | T
                 | {

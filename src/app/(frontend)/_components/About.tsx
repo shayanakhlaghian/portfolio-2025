@@ -35,7 +35,7 @@ const CvCell = ({ href }: { href: string | undefined | null }) => {
     <div className="about-grid-cell col-span-full col-start-1 !bg-primary lg:col-span-1 lg:col-start-4">
       <AppLink
         href={href || '#'}
-        newTab={true}
+        newTab
         className="relative flex h-full w-full items-center justify-center"
       >
         <Pointer>
@@ -55,7 +55,7 @@ const GithubCell = ({ href }: { href: string | undefined | null }) => {
     <div className="about-grid-cell col-span-full col-start-1 min-h-44 !bg-black !p-0 lg:col-start-5">
       <AppLink
         href={href || '#'}
-        newTab={true}
+        newTab
         className="relative flex h-full w-full items-center justify-center"
       >
         <Pointer>

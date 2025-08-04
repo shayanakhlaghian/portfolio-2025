@@ -3,6 +3,7 @@ import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical
 import { PlusIcon } from 'lucide-react';
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
+import Image from 'next/image';
 
 import type { Media, Icon, Landing } from '@/payload-types';
 import {
@@ -30,7 +31,7 @@ import {
   MediaIcon,
   AppLink,
 } from '@/components';
-import { ScrollArea } from '@radix-ui/react-scroll-area';
+import { images } from '@/assets';
 
 type TWork = {
   id?: string | null;
@@ -38,9 +39,10 @@ type TWork = {
   name: string;
   excerpt: string;
   description: SerializedEditorState;
-  demo: {
-    href: string;
-    text: string;
+  github?: string | null;
+  demo?: {
+    href?: string | null;
+    text?: string | null;
     icon?: (number | null) | Icon;
     newTab?: boolean | null;
   };
@@ -55,7 +57,7 @@ const Shadows = () => {
   );
 };
 
-const WorkCard = ({ cover, name, excerpt, description, demo }: TWork) => {
+const WorkCard = ({ cover, name, excerpt, description, github, demo }: TWork) => {
   return (
     <MorphingDialog transition={{ type: 'spring', bounce: 0.1, duration: 0.7 }}>
       <MorphingDialogTrigger className="flex h-96 w-full flex-col overflow-hidden rounded-3xl border bg-card">
@@ -100,21 +102,30 @@ const WorkCard = ({ cover, name, excerpt, description, demo }: TWork) => {
               {name}
             </MorphingDialogTitle>
             <MorphingDialogDescription>
-              <SimpleBar className="h-72 w-full lg:h-80" forceVisible='y' autoHide={false}>
+              <SimpleBar className="h-72 w-full lg:h-80" forceVisible="y" autoHide={false}>
                 <RichText
                   data={description}
                   disableAnimation
-                  className="text-muted-foreground prose-p:!text-sm lg:prose-p:!text-base mr-8 prose-headings:!text-lg lg:prose-headings:!text-xl"
+                  className="mr-8 text-muted-foreground prose-headings:!text-lg lg:prose-headings:!text-xl prose-p:!text-sm lg:prose-p:!text-base"
                 />
               </SimpleBar>
             </MorphingDialogDescription>
-            <div className="mt-2.5 flex w-full justify-end lg:mt-8">
-              <AppLink href={demo.href} newTab={demo.newTab}>
-                <Button className="w-full lg:w-auto">
-                  {demo.text}
-                  <MediaIcon icon={demo.icon as Icon} className='dark:invert-0'/>
-                </Button>
-              </AppLink>
+            <div className="mt-2.5 flex w-full justify-end gap-2 lg:mt-8">
+              {github && (
+                <AppLink href={github} newTab className="w-full lg:w-auto">
+                  <Button className="w-full" variant="secondary">
+                    Github <Image src={images.githubMark} alt="Github" width={16} height={16} />
+                  </Button>
+                </AppLink>
+              )}
+              {demo?.text && (
+                <AppLink href={demo.href || '#'} newTab={demo.newTab} className="w-full lg:w-auto">
+                  <Button className="w-full">
+                    {demo.text}
+                    <MediaIcon icon={demo.icon as Icon} className="dark:invert-0" />
+                  </Button>
+                </AppLink>
+              )}
             </div>
           </div>
           <MorphingDialogClose className="text-muted-foreground" />

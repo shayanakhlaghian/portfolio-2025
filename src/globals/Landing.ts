@@ -153,18 +153,20 @@ export const Landing: GlobalConfig = {
               required: true,
             },
             {
+              name: 'github',
+              type: 'text',
+            },
+            {
               name: 'demo',
               type: 'group',
               fields: [
                 {
                   name: 'href',
                   type: 'text',
-                  required: true,
                 },
                 {
                   name: 'text',
                   type: 'text',
-                  required: true,
                 },
                 {
                   name: 'icon',
