@@ -417,6 +417,7 @@ export interface Landing {
       };
       [k: string]: unknown;
     } | null;
+    cv?: string | null;
     github?: string | null;
   };
   skills?: {
@@ -594,6 +595,7 @@ export interface LandingSelect<T extends boolean = true> {
         avatar?: T;
         title?: T;
         description?: T;
+        cv?: T;
         github?: T;
       };
   skills?:

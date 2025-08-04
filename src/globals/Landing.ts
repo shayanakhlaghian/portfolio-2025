@@ -67,6 +67,10 @@ export const Landing: GlobalConfig = {
           type: 'richText',
         },
         {
+          name: 'cv',
+          type: 'text',
+        },
+        {
           name: 'github',
           type: 'text',
         },

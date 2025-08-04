@@ -3,7 +3,7 @@ import {
   type SerializedEditorState,
   type SerializedLexicalNode,
 } from '@payloadcms/richtext-lexical/lexical';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, FileUserIcon } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import Image from 'next/image';
@@ -14,23 +14,45 @@ import { images } from '@/assets';
 
 const TitleCell = ({ children, avatar }: { children: React.ReactNode; avatar: Media }) => {
   return (
-    <div className="about-grid-cell col-start-1 col-span-full lg:col-end-4 flex items-center gap-4">
+    <div className="about-grid-cell col-span-full col-start-1 flex items-center gap-4 lg:col-end-4">
       <Pointer>
         <span className="text-4xl">👋</span>
       </Pointer>
-      <div className="relative size-14 overflow-hidden rounded-full border lg:size-20 shrink-0">
-        <Image src={avatar.url as string} alt="Avatar" fill className="object-cover" />
-      </div>
-      <Title as="h2" disableAnimation className='my-0 text-lg lg:!text-xl'>
+      {avatar && (
+        <div className="relative size-14 shrink-0 overflow-hidden rounded-full border lg:size-20">
+          <Image src={avatar.url as string} alt="Avatar" fill className="object-cover" />
+        </div>
+      )}
+      <Title as="h2" disableAnimation className="my-0 text-lg lg:!text-xl">
         {children}
       </Title>
     </div>
   );
 };
 
+const CvCell = ({ href }: { href: string | undefined | null }) => {
+  return (
+    <div className="about-grid-cell col-span-full col-start-1 !bg-primary lg:col-span-1 lg:col-start-4">
+      <AppLink
+        href={href || '#'}
+        newTab={true}
+        className="relative flex h-full w-full items-center justify-center"
+      >
+        <Pointer>
+          <span className="text-4xl">📒</span>
+        </Pointer>
+        <div className="flex flex-col items-center gap-2 text-white">
+          <FileUserIcon className="size-14 lg:size-20" />
+          <p className="font-accent text-sm font-bold">Download CV</p>
+        </div>
+      </AppLink>
+    </div>
+  );
+};
+
 const GithubCell = ({ href }: { href: string | undefined | null }) => {
   return (
-    <div className="about-grid-cell col-span-full col-start-1 min-h-44 !bg-black !p-0 lg:col-start-4">
+    <div className="about-grid-cell col-span-full col-start-1 min-h-44 !bg-black !p-0 lg:col-start-5">
       <AppLink
         href={href || '#'}
         newTab={true}
@@ -90,6 +112,7 @@ const About = (about: Landing['about']) => {
     <SectionWrapper id="about" className="mt-24">
       <div className="grid auto-rows-max grid-cols-8 gap-4">
         <TitleCell avatar={about?.avatar as Media}>{about?.title}</TitleCell>
+        <CvCell href={about?.cv} />
         <GithubCell href={about?.github} />
         <DescriptionCell data={about?.description} />
       </div>

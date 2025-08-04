@@ -13,7 +13,7 @@ const Home = async () => {
       <About {...about} />
       <Skills {...skills} />
       <Works {...works} />
-      <Contact />
+      <Contact {...contact} />
     </>
   );
 };
