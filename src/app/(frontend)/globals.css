@@ -119,6 +119,7 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.213 47.604);
+  --simplebar-track: #d5d5d6;
 }
 .dark {
   --background: oklch(0.141 0.005 285.823);
@@ -157,6 +158,7 @@
   --color-3: oklch(69.6% 0.165 251);
   --color-4: oklch(80.2% 0.134 225);
   --color-5: oklch(90.7% 0.231 133);
+  --simplebar-track: #333337;
 }
 
 @layer base {
@@ -168,6 +170,24 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  .simplebar-vertical {
+    width: 0.75rem !important;
+  }
+
+  .simplebar-track {
+    background-color: var(--simplebar-track) !important;
+    border-radius: 10rem;
+  }
+
+  .simplebar-scrollbar.simplebar-visible:before {
+    background: linear-gradient(to bottom, var(--color-primary), #662a00) !important;
+    opacity: 1 !important;
+    border-radius: 10rem !important;
+  }
+
+  .simplebar-horizontal {
+    display: none;
   }
 }
 

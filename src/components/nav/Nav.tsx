@@ -1,7 +1,7 @@
-import type { Nav } from '@/payload-types';
+import type { Nav as TNav } from '@/payload-types';
 import { DesktopNav, MobileNav } from '.';
 
-const Nav = ({ items }: { items: Nav['items'] }) => {
+const Nav = ({ items }: { items: TNav['items'] }) => {
   return (
     <>
       <DesktopNav items={items} />

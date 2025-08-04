@@ -1,5 +1,8 @@
+'use client';
 import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical';
 import { PlusIcon } from 'lucide-react';
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
 
 import type { Media, Icon, Landing } from '@/payload-types';
 import {
@@ -27,6 +30,7 @@ import {
   MediaIcon,
   AppLink,
 } from '@/components';
+import { ScrollArea } from '@radix-ui/react-scroll-area';
 
 type TWork = {
   id?: string | null;
@@ -96,17 +100,19 @@ const WorkCard = ({ cover, name, excerpt, description, demo }: TWork) => {
               {name}
             </MorphingDialogTitle>
             <MorphingDialogDescription>
-              <RichText
-                data={description}
-                disableAnimation
-                className="text-muted-foreground prose-p:!text-xs lg:prose-p:!text-sm"
-              />
+              <SimpleBar className="h-72 w-full lg:h-80" forceVisible='y' autoHide={false}>
+                <RichText
+                  data={description}
+                  disableAnimation
+                  className="text-muted-foreground prose-p:!text-sm lg:prose-p:!text-base mr-8 prose-headings:!text-lg lg:prose-headings:!text-xl"
+                />
+              </SimpleBar>
             </MorphingDialogDescription>
             <div className="mt-2.5 flex w-full justify-end lg:mt-8">
               <AppLink href={demo.href} newTab={demo.newTab}>
                 <Button className="w-full lg:w-auto">
                   {demo.text}
-                  <MediaIcon icon={demo.icon as Icon} />
+                  <MediaIcon icon={demo.icon as Icon} className='dark:invert-0'/>
                 </Button>
               </AppLink>
             </div>
@@ -144,7 +150,7 @@ const WorksCarousel = ({ items }: { items: TWork[] | undefined | null }) => {
 
 const Works = (works: Landing['works']) => {
   return (
-    <SectionWrapper id="works" className='mt-28'>
+    <SectionWrapper id="works" className="mt-28">
       <Title as="h2">{works?.title}</Title>
       <RichText data={works?.description} />
       <WorksCarousel items={works?.items} />
