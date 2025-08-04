@@ -20,6 +20,9 @@ importers:
       '@payloadcms/db-sqlite':
         specifier: 3.49.1
         version: 3.49.1(payload@3.49.1(graphql@16.11.0)(typescript@5.9.2))
+      '@payloadcms/email-nodemailer':
+        specifier: ^3.49.1
+        version: 3.49.1(payload@3.49.1(graphql@16.11.0)(typescript@5.9.2))
       '@payloadcms/next':
         specifier: 3.49.1
         version: 3.49.1(@types/react@19.1.9)(graphql@16.11.0)(monaco-editor@0.52.2)(next@15.4.5(@babel/core@7.28.0)(@playwright/test@1.54.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.49.1(graphql@16.11.0)(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)
