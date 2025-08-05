@@ -1,4 +1,5 @@
-import { sqliteAdapter } from '@payloadcms/db-sqlite';
+import { mongooseAdapter } from '@payloadcms/db-mongodb';
+import { s3Storage } from '@payloadcms/storage-s3'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import {nodemailerAdapter} from '@payloadcms/email-nodemailer';
@@ -24,18 +25,36 @@ export default buildConfig({
   collections,
   globals,
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.PAYLOAD_SECRET as string,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: sqliteAdapter({
-    client: {
-      url: process.env.DATABASE_URI || '',
-    },
+  db: mongooseAdapter({
+    url: process.env.MONGODB_URI as string,
   }),
   sharp,
   plugins: [
     payloadCloudPlugin(),
+     s3Storage({
+      config: {
+        region: process.env.S3_REGION,
+        endpoint: process.env.S3_ENDPOINT,
+        forcePathStyle: true,
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY as string,
+          secretAccessKey: process.env.S3_SECRET_KEY as string,
+        },
+      },
+      bucket: process.env.S3_BUCKET as string,
+      collections: {
+        media: {
+          prefix: 'media',
+        },
+        icons: {
+          prefix: 'icons',
+        },
+      },
+    }),
   ],
   email: nodemailerAdapter({
     defaultFromAddress: process.env.EMAIL_DEFAULT_FROM_ADDRESS as string,
@@ -48,5 +67,5 @@ export default buildConfig({
         pass: process.env.EMAIL_PASS,
       },
     }
-  })
+  }),
 });

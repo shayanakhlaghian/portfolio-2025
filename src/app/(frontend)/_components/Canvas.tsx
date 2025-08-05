@@ -1,6 +1,5 @@
 'use client';
-import * as THREE from 'three';
-import { RefObject, Suspense, useRef } from 'react';
+import { Suspense } from 'react';
 import { Canvas as ThreeCanvas } from '@react-three/fiber';
 import {
   PerspectiveCamera,
@@ -8,28 +7,13 @@ import {
   Float,
   useProgress,
   Html,
-  useHelper,
 } from '@react-three/drei';
-import { useControls } from 'leva';
 
 import { Crt } from '@/models';
 import { AnimatedCircularProgressBar } from '@/components';
 import { useMediaQuery } from 'react-responsive';
 
 const Experience = () => {
-  // const directionalLightRef = useRef<THREE.DirectionalLight>(null);
-  // useHelper(
-  //   directionalLightRef as RefObject<THREE.Object3D>,
-  //   THREE.DirectionalLightHelper,
-  //   2,
-  //   'red',
-  // );
-  // const { x, y, z } = useControls({
-  //   x: { min: -10, max: 10, value: 0, step: 0.1 },
-  //   y: { min: -10, max: 10, value: 0, step: 0.1 },
-  //   z: { min: -10, max: 10, value: 0, step: 0.1 },
-  // });
-
   const isMobile = useMediaQuery({ maxWidth: 500 });
 
   return (
@@ -52,7 +36,7 @@ const Experience = () => {
           floatIntensity={0.8}
           rotationIntensity={0.9}
         >
-          <Crt rotation-y={-Math.PI * 0.875} scale={isMobile ? .95 : 1}/>
+          <Crt rotation-y={-Math.PI * 0.875} scale={isMobile ? 0.95 : 1} />
         </Float>
       </PresentationControls>
     </>
@@ -69,7 +53,7 @@ const Loading = () => {
         max={100}
         gaugePrimaryColor="#0095FF"
         gaugeSecondaryColor="#dedede"
-        className="text-black size-20 text-base md:size-24 lg:size-32 lg:text-xl"
+        className="size-20 text-base text-black md:size-24 lg:size-32 lg:text-xl"
         value={progress}
       />
     </Html>
