@@ -46,6 +46,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
   };
 };
 
+export const revalidate = 0;
+
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" suppressHydrationWarning>
