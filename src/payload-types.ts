@@ -86,7 +86,7 @@ export interface Config {
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
-    defaultIDType: number;
+    defaultIDType: string;
   };
   globals: {
     landing: Landing;
@@ -132,7 +132,7 @@ export interface UserAuthOperations {
  * via the `definition` "users".
  */
 export interface User {
-  id: number;
+  id: string;
   role?: ('admin' | 'user') | null;
   updatedAt: string;
   createdAt: string;
@@ -157,8 +157,9 @@ export interface User {
  * via the `definition` "media".
  */
 export interface Media {
-  id: number;
+  id: string;
   alt: string;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -176,8 +177,9 @@ export interface Media {
  * via the `definition` "icons".
  */
 export interface Icon {
-  id: number;
+  id: string;
   alt?: string | null;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -195,7 +197,7 @@ export interface Icon {
  * via the `definition` "messages".
  */
 export interface Message {
-  id: number;
+  id: string;
   name: string;
   email: string;
   message: string;
@@ -207,28 +209,28 @@ export interface Message {
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: number;
+  id: string;
   document?:
     | ({
         relationTo: 'users';
-        value: number | User;
+        value: string | User;
       } | null)
     | ({
         relationTo: 'media';
-        value: number | Media;
+        value: string | Media;
       } | null)
     | ({
         relationTo: 'icons';
-        value: number | Icon;
+        value: string | Icon;
       } | null)
     | ({
         relationTo: 'messages';
-        value: number | Message;
+        value: string | Message;
       } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   updatedAt: string;
   createdAt: string;
@@ -238,10 +240,10 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: number;
+  id: string;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   key?: string | null;
   value?:
@@ -261,7 +263,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: number;
+  id: string;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
@@ -296,6 +298,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -314,6 +317,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface IconsSelect<T extends boolean = true> {
   alt?: T;
+  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -374,7 +378,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  * via the `definition` "landing".
  */
 export interface Landing {
-  id: number;
+  id: string;
   hero: {
     title?: string | null;
     description?: {
@@ -394,13 +398,13 @@ export interface Landing {
     } | null;
     cta: {
       text: string;
-      icon?: (number | null) | Icon;
+      icon?: (string | null) | Icon;
       href: string;
       newTab?: boolean | null;
     };
   };
   about?: {
-    avatar?: (number | null) | Media;
+    avatar?: (string | null) | Media;
     title?: string | null;
     description?: {
       root: {
@@ -439,7 +443,7 @@ export interface Landing {
     } | null;
     items?:
       | {
-          logo: number | Icon;
+          logo: string | Icon;
           name: string;
           level: number;
           id?: string | null;
@@ -465,7 +469,7 @@ export interface Landing {
     } | null;
     items?:
       | {
-          cover: number | Media;
+          cover: string | Media;
           name: string;
           excerpt: string;
           description: {
@@ -487,7 +491,7 @@ export interface Landing {
           demo?: {
             href?: string | null;
             text?: string | null;
-            icon?: (number | null) | Icon;
+            icon?: (string | null) | Icon;
             newTab?: boolean | null;
           };
           id?: string | null;
@@ -506,10 +510,10 @@ export interface Landing {
  * via the `definition` "general".
  */
 export interface General {
-  id: number;
+  id: string;
   source: {
     text: string;
-    icon: number | Icon;
+    icon: string | Icon;
     href: string;
     newTab?: boolean | null;
   };
@@ -521,7 +525,7 @@ export interface General {
  * via the `definition` "metadata".
  */
 export interface Metadatum {
-  id: number;
+  id: string;
   title: string;
   description: string;
   openGraph?: {
@@ -530,7 +534,7 @@ export interface Metadatum {
     url?: string | null;
     images?:
       | {
-          image?: (number | null) | Media;
+          image?: (string | null) | Media;
           id?: string | null;
         }[]
       | null;
@@ -540,11 +544,11 @@ export interface Metadatum {
     card?: ('summary' | 'summary_large_image') | null;
     title?: string | null;
     description?: string | null;
-    image?: (number | null) | Media;
+    image?: (string | null) | Media;
   };
   icons: {
-    icon: number | Icon;
-    apple: number | Media;
+    icon: string | Icon;
+    apple: string | Media;
   };
   /**
    * Robots meta tags
@@ -558,11 +562,11 @@ export interface Metadatum {
  * via the `definition` "nav".
  */
 export interface Nav {
-  id: number;
+  id: string;
   items?:
     | {
         text: string;
-        icon?: (number | null) | Icon;
+        icon?: (string | null) | Icon;
         href: string;
         newTab?: boolean | null;
         id?: string | null;

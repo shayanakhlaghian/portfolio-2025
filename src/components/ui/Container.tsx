@@ -21,6 +21,7 @@ const Container = ({
         {
           opacity: 1,
           duration: 2,
+          delay: 0.5,
           ...gsapConfig,
           scrollTrigger: {
             trigger: ref.current,

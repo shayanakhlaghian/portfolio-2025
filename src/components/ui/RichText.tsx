@@ -39,6 +39,7 @@ const AnimatedRichText = ({
             yPercent: 0,
             duration: 1.6,
             ease: 'expo.out',
+            delay: 0.5,
             stagger: 0.075,
             ...gsapConfig,
             scrollTrigger: {

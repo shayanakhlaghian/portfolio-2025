@@ -98,6 +98,7 @@ const About = (about: Landing['about']) => {
         {
           opacity: 1,
           duration: 1.6,
+          delay: .7,
           ease: 'expo.out',
           scrollTrigger: {
             trigger: cell,

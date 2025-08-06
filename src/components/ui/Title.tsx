@@ -32,6 +32,7 @@ const Title = ({
           opacity: 1,
           yPercent: 0,
           duration: 1.2,
+          delay: .5,
           stagger: 0.05,
           ease: 'expo.out',
           ...gsapConfig,
